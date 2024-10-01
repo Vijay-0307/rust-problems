@@ -1,10 +1,23 @@
 fn main() {
-    println!("{}", is_even(11)); //{} - print a dynamic variable
+    println!("{}", fib(4));
 }
+// 0 1 1 2 3
+fn fib(num: u32) -> u32 {
+    let mut first = 0;
+    let mut second = 1;
 
-fn is_even(num: i32) -> bool { //num: i32 are argument
-    if num % 2 == 0 {
-        return true;
+    if num == 0 {
+        return first;
     }
-    return false;
+
+    if num == 1 {
+        return second;
+    }
+
+    for _ in 0..(num - 1) {
+        let temp = second;
+        second = second + first;
+        first = temp;
+    }
+    return second;
 }
